@@ -1,0 +1,3 @@
+-   Install MongoDB Compass
+-   Open terminal and run: npm start
+-   Check in link: localhost:5000/checkkey/{keyid}
