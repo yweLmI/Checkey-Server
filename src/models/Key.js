@@ -5,17 +5,15 @@ const KeySchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    date: {
-        type: Date,
-        default: Date.now,
+    status: {
+        type: Boolean,
+        default: true,
     },
     create_at: {
         type: String,
-        required: true,
     },
     end_at: {
         type: String,
-        required: true,
     },
 });
 module.exports = mongoose.model("Key", KeySchema);
