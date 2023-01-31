@@ -1,6 +1,7 @@
 import express from "express";
 import User from "../models/User";
 import jwt from "jsonwebtoken";
+import path from "path";
 import { Api200Success, Api400Error, Api500Error, Api404Error } from "../error/apiResponse";
 
 const UpdateUser = async (req, res) => {
@@ -54,4 +55,21 @@ const CheckUser = async (req, res) => {
     //console.log("Helllo" + id);
 };
 
-module.exports = { generateKeyToken, CheckUser };
+const CheckToken = async (req, res) => {
+    await User.find({ Token: req.query.Token })
+        .then(function (data) {
+            if (data.length) {
+                //const file1 = path.resolve(process.cwd(), "/download/hello.txt");
+                const file = `${__dirname}/download/hello.txt`;
+                res.download(file);
+            } else {
+                res.send(new Api404Error(`Token: ${req.query.Token} not found. Try again`));
+            }
+        })
+        .catch(() => {
+            res.send(new Api500Error(`Internal Server Error`));
+        });
+    //console.log("Helllo" + id);
+};
+
+module.exports = { generateKeyToken, CheckUser, CheckToken };
