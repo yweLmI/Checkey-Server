@@ -2,3 +2,4 @@
 -   Open terminal and run: npm start
 -   Insert Keys in local/keys
 -   Check in link: localhost:5000/checkkey/{query}
+-  Field in query : username, domain, key
